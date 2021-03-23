@@ -3,32 +3,47 @@ package entidades;
 public class Pedido_Item {
 	private Integer quantidade;
 	
-	private Produto preco;
+	private Produto produto;
 	
-	public Pedido_Item(Integer quantidade, Produto preco) {
+	
+	public Pedido_Item(Integer quantidade, Produto produto) {
 		this.quantidade = quantidade;
-		this.preco = preco;
+		this.produto = produto;
 	}
+	
+	
+	
+
 
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 
+
+
+
+
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public Produto getPreco() {
-		return preco;
-	}
 
-	public void setPreco(Produto preco) {
-		this.preco = preco;
+
+
+
+	public double subTotal() {
+		return  this.quantidade * produto.getPreco();
 	}
 	
 	
-	public double subTotal() {
-		return  this.quantidade * preco.getPreco();
+	public String toString() {
+		return produto.getNome()
+				+ ", $" 
+				+ String.format("%.2f", produto.getPreco()) 
+				+ ", Quantidade: " 
+				+ quantidade + 
+				", Subtotal: $" 
+				+ String.format("%.2f", subTotal());
 	}
 	
 
